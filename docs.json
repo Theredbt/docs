@@ -105,19 +105,13 @@
   "contextual": {
     "options": [
       "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "view"
     ]
   },
   "footer": {
     "socials": {
       "x": "https://x.com/savemate_io",
-      "github": "https://github.com/Theredbt"
+      "github": "https://github.com"
     }
   },
   "seo": {

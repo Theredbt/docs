@@ -1,15 +1,15 @@
 ---
 title: "Format Conversion"
-description: "Convert HLS streams to MP4, MKV, MOV, or WebM. Extract audio to MP3 or AAC."
+description: "Convert HLS and DASH streams to MP4, MKV, MOV, or WebM. Extract audio to MP3 or AAC."
 ---
 
 <Info>Format conversion is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
 
-SaveMate can convert HLS/m3u8 streams into standard video container formats, and extract audio tracks into common audio formats.
+SaveMate can convert HLS (m3u8) and DASH (mpd) streams into standard video container formats, and extract audio tracks into common audio formats.
 
 ## Video format conversion
 
-Convert detected HLS streams to any of these formats:
+Convert detected HLS and DASH streams to any of these formats:
 
 | Target format | Best for |
 |--------------|----------|
@@ -31,7 +31,7 @@ Extract audio from video streams into standalone audio files:
 
 <Steps>
   <Step title="Detect and download">
-    SaveMate detects the HLS stream and downloads all video/audio segments.
+    SaveMate detects the HLS or DASH stream and downloads all video/audio segments.
   </Step>
   <Step title="Select target format">
     Choose your desired output format from the format picker.
@@ -48,4 +48,5 @@ Extract audio from video streams into standalone audio files:
 
 - **All processing is local** — Conversion happens in your browser using efficient WebAssembly code. Your video data never leaves your device.
 - **Quality preservation** — SaveMate converts container formats without re-encoding, so there's no quality loss for compatible codec combinations.
-- **Separate audio/video** — When an HLS stream has separate audio and video tracks, SaveMate automatically muxes them into a single output file.
+- **Separate audio/video** — When an HLS or DASH stream has separate audio and video tracks, SaveMate automatically muxes them into a single output file.
+- **DASH SegmentBase detection** — For DASH streams using SegmentBase (direct MP4), SaveMate downloads the file directly without conversion overhead.

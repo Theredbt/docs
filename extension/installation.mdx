@@ -5,7 +5,7 @@ description: "Install the SaveMate browser extension on Chrome, Edge, or Brave."
 
 ## Install from Chrome Web Store
 
-SaveMate is available on the [Chrome Web Store](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) and works with all Chromium-based browsers.
+SaveMate v2.0 is available on the [Chrome Web Store](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) and works with all Chromium-based browsers.
 
 <Steps>
   <Step title="Open the extension page">
@@ -17,7 +17,7 @@ SaveMate is available on the [Chrome Web Store](https://chromewebstore.google.co
   <Step title="Confirm permissions">
     A dialog will appear asking you to confirm the extension's permissions. Click **Add extension** to proceed.
 
-    SaveMate requests only the minimum permissions needed to detect video streams on the pages you visit. No data is sent to external servers.
+    SaveMate requests only the permissions needed for stream detection. See [Supported Browsers](/extension/supported-browsers#extension-permissions) for details on each permission.
   </Step>
   <Step title="Installation complete">
     You'll see a confirmation message and the SaveMate icon will appear in your browser's extension area. We recommend [pinning the extension](/extension/pinning) for easy access.
@@ -40,17 +40,31 @@ SaveMate is available on the [Chrome Web Store](https://chromewebstore.google.co
 ## System requirements
 
 - **Operating system**: macOS, Windows, or Linux
-- **Browser**: Any Chromium-based browser (Chrome 88+, Edge 88+, Brave 1.20+)
+- **Browser**: Any Chromium-based browser with Manifest V3 support (Chrome 88+, Edge 88+, Brave 1.20+)
 - **Internet**: Required for installation and stream detection. Downloads can be watched offline.
 
 ## Privacy and security
 
-SaveMate has been verified by the Google Chrome Web Store security team. Key privacy details:
+SaveMate has been verified by the Google Chrome Web Store security team:
 
 - All video processing happens locally in your browser
 - No browsing data is collected or transmitted
 - No analytics or tracking scripts
-- Extension permissions are limited to stream detection only
+- Stream detection runs entirely within the extension sandbox
+- Extension source uses strict Content Security Policy (`script-src 'self'; object-src 'self'`)
+
+## Configure the extension
+
+After installation, you can customize SaveMate from the options page:
+
+- **Format filtering** — Choose which video and audio formats to detect
+- **Minimum file size** — Filter out small files (10KB, 100KB, 1MB, 2MB, or custom)
+- **Download management** — Enable browser download API for custom file naming and save location
+- **Download path** — Set a custom folder prefix for organized downloads
+- **Chromecast** — Toggle Chromecast casting support
+- **Blocked sites** — Exclude specific domains from detection
+
+To access settings, right-click the SaveMate icon and select **Options**.
 
 ## Updating the extension
 
