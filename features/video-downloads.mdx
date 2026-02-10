@@ -1,0 +1,78 @@
+---
+title: "Video Downloads"
+description: "Download detected video streams in your preferred quality and format."
+---
+
+Once SaveMate detects a video stream, you can download it to your device in the quality and format of your choice.
+
+## How to download
+
+<Steps>
+  <Step title="Detect a stream">
+    Navigate to a page with video content. The SaveMate icon lights up when a stream is found.
+  </Step>
+  <Step title="Open the download panel">
+    Click the SaveMate icon to see detected streams. Click **Download** on the stream you want.
+  </Step>
+  <Step title="Choose quality and format">
+    The format picker shows all available quality levels and formats for the detected stream. Select your preferred option.
+  </Step>
+  <Step title="Start download">
+    Click **Download** to start. The file saves to your browser's default download location.
+  </Step>
+</Steps>
+
+## Available qualities
+
+| Quality | Free plan | Professional |
+|---------|-----------|-------------|
+| SD (480p and below) | Unlimited | Unlimited |
+| HD (720p) | Unlimited | Unlimited |
+| Full HD (1080p) | 3 per day | Unlimited |
+| QHD (1440p) | - | Unlimited |
+| 4K (2160p) | - | Unlimited |
+| 8K (4320p) | - | Unlimited |
+| 60fps content | - | Unlimited |
+
+## HLS stream downloads
+
+For HLS (m3u8) streams, SaveMate handles the complexity of downloading segmented video:
+
+1. Parses the HLS manifest to identify all video segments
+2. Downloads segments concurrently for maximum speed
+3. Combines segments into a single continuous file
+4. Optionally converts to your preferred container format
+
+HLS downloads support:
+- **Concurrent threading** — Multiple segments download in parallel
+- **Resume capability** — Interrupted downloads can be retried
+- **Separate audio/video** — Automatically combines separate audio and video tracks
+- **Live streams** — Record ongoing live streams (Professional plan)
+
+## Download limits
+
+**Free users:**
+- Unlimited downloads at 720p and below
+- 3 HD downloads per day (1080p and above)
+- Daily limit resets at midnight
+
+**Professional users:**
+- Unlimited downloads at all qualities
+- No daily limits
+
+<Tip>
+  The HD download limit is tracked per device. If you're logged in, it's tied to your account to prevent quota abuse across devices.
+</Tip>
+
+## Download formats
+
+SaveMate supports downloading in multiple container formats:
+
+- **MP4** — Universal compatibility, works on all devices and players
+- **MKV** — Supports multiple audio/subtitle tracks
+- **MOV** — Preferred by Apple ecosystem and video editors
+- **WebM** — Web-optimized, open format
+
+<Info>
+  Format conversion from HLS to MP4/MKV/MOV/WebM is a [Professional feature](/features/format-conversion).
+</Info>

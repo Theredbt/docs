@@ -1,0 +1,50 @@
+---
+title: "Chromecast & AirPlay"
+description: "Cast detected video streams to your TV or external display using Chromecast."
+---
+
+SaveMate lets you cast detected video streams directly to Chromecast and AirPlay-compatible devices, so you can watch on the big screen.
+
+## How to cast
+
+<Steps>
+  <Step title="Detect a stream">
+    Navigate to a page with video content. Wait for the SaveMate icon to light up.
+  </Step>
+  <Step title="Open the cast player">
+    Click the SaveMate icon and select the **Cast** option for the detected stream. This opens the SaveMate cast player.
+  </Step>
+  <Step title="Choose your device">
+    The cast player will show available Chromecast and AirPlay devices on your local network. Select your TV or display.
+  </Step>
+  <Step title="Start casting">
+    The video stream begins playing on your selected device. Use the on-screen controls to play, pause, seek, and adjust volume.
+  </Step>
+</Steps>
+
+## Cast player features
+
+The SaveMate cast player provides a full playback experience:
+
+- **Play/pause/seek** — Standard playback controls
+- **Volume control** — Adjust volume from the player interface
+- **Quality selection** — Choose stream quality based on your network and device
+- **Thumbnail preview** — See a preview of the stream before and during casting
+- **Session management** — Each cast session gets a unique identifier for tracking
+
+## Availability
+
+Chromecast and AirPlay casting is available on both Free and Professional plans. No account required — casting works for anonymous users too.
+
+## Technical details
+
+- Cast sessions are UUID-based for secure, unique identification
+- Sessions automatically expire after 2 hours of inactivity
+- Thumbnails are polled during active sessions for preview updates
+- The cast player uses HLS.js for adaptive bitrate streaming to the cast device
+
+## Requirements
+
+- A Chromecast, Chromecast with Google TV, or AirPlay-compatible device
+- The cast device must be on the same Wi-Fi network as your computer
+- A Chromium-based browser (Chrome, Edge, or Brave)

@@ -1,0 +1,71 @@
+---
+title: "Cloud Storage"
+description: "Sync your downloaded videos to Google Drive, Dropbox, AWS S3, or Cloudflare R2."
+---
+
+<Info>Cloud storage sync is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+
+SaveMate can automatically upload your downloaded videos to your preferred cloud storage provider, keeping your content backed up and accessible from any device.
+
+## Supported providers
+
+| Provider | Authentication | Upload method | Best for |
+|----------|---------------|---------------|----------|
+| **Google Drive** | OAuth 2.0 | Resumable upload | Personal cloud storage, easy sharing |
+| **Dropbox** | OAuth 2.0 | Standard API | Cross-platform file sync |
+| **AWS S3** | Access Key + Secret | Multipart upload | Large files, professional workflows |
+| **Cloudflare R2** | Access Key + Secret | Multipart upload (S3-compatible) | Cost-effective object storage |
+
+## Connect a provider
+
+<Steps>
+  <Step title="Go to Cloud Sync">
+    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in to your SaveMate account.
+  </Step>
+  <Step title="Choose a provider">
+    Click **Connect** on the provider you want to use.
+  </Step>
+  <Step title="Authenticate">
+    - **Google Drive / Dropbox**: You'll be redirected to authorize SaveMate via OAuth. Grant the requested permissions.
+    - **AWS S3 / Cloudflare R2**: Enter your Access Key ID and Secret Access Key. SaveMate stores these credentials securely.
+  </Step>
+  <Step title="Start syncing">
+    Once connected, your downloads can be automatically uploaded to your cloud storage.
+  </Step>
+</Steps>
+
+## Upload methods
+
+### Direct upload (files under 100MB)
+
+For smaller files, SaveMate uploads directly from your browser to the cloud provider. This is fast and requires no intermediate storage.
+
+### Multipart upload (files over 100MB)
+
+For larger files (AWS S3 and Cloudflare R2), SaveMate uses multipart upload:
+
+- Files are split into smaller chunks
+- Chunks upload in parallel for maximum speed
+- Uploads can be **paused and resumed**
+- Supports files up to 50TB
+
+### Resumable upload (Google Drive)
+
+Google Drive uses its resumable upload protocol, which automatically handles network interruptions and retries.
+
+## Upload history
+
+Track all your cloud uploads from the Cloud Sync page:
+
+- **Status filters** — View all, completed, failed, or cancelled uploads
+- **File details** — Name, provider, size, and upload date
+- **Direct links** — Click through to view the file in your cloud storage
+- **Retry failed uploads** — Re-attempt uploads that failed due to network issues
+
+## Managing connections
+
+You can manage your cloud connections from the Cloud Sync settings:
+
+- **Update credentials** — Refresh OAuth tokens or update API keys
+- **Disconnect** — Remove a provider and revoke access
+- **Request a provider** — Suggest new cloud storage providers for SaveMate to support

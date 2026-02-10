@@ -1,0 +1,66 @@
+---
+title: "Stream Detection"
+description: "SaveMate automatically detects HLS, MP4, and WebM video streams as you browse."
+---
+
+SaveMate's core feature is universal stream detection. As you browse the web, SaveMate monitors network activity for video streams and notifies you when one is found.
+
+## How it works
+
+1. **Passive monitoring** — SaveMate listens for network requests that match known video stream patterns (HLS manifests, MP4 files, WebM files)
+2. **Stream identification** — When a matching request is detected, SaveMate parses the stream metadata (title, quality, duration)
+3. **Visual notification** — The extension icon lights up to indicate a stream is available
+4. **User action** — You click the icon to view stream details and choose what to do (download, cast, save)
+
+All detection happens locally in your browser. No data is sent to external servers.
+
+## Supported stream types
+
+| Type | Format | Description |
+|------|--------|-------------|
+| **HLS** | `.m3u8` | HTTP Live Streaming — the most common adaptive streaming format. Used by most video platforms. |
+| **MP4** | `.mp4` | Direct MP4 video files served over HTTP. |
+| **WebM** | `.webm` | WebM video format, commonly used on web platforms. |
+
+## Detection indicator
+
+The SaveMate extension icon provides real-time feedback:
+
+- **Default state** — No streams detected on the current page
+- **Active (blue)** — One or more video streams have been detected
+
+Click the icon when it's active to see all detected streams and their details.
+
+## Stream metadata
+
+When a stream is detected, SaveMate extracts and displays:
+
+- **Title** — The video title from the page or stream metadata
+- **Thumbnail** — A preview image when available
+- **Quality** — Available quality levels (480p, 720p, 1080p, 4K, etc.)
+- **Duration** — Video length when available
+- **Source URL** — The originating page
+
+## Quality tiers
+
+| Quality | Resolution | Availability |
+|---------|-----------|--------------|
+| SD | 480p and below | Free |
+| HD | 720p | Free |
+| Full HD | 1080p | Free (3/day limit) |
+| QHD | 1440p | Professional |
+| 4K | 2160p | Professional |
+| 8K | 4320p | Professional |
+| 60fps | Any resolution | Professional |
+
+<Note>
+  Free users can download unlimited 720p and below. HD downloads (1080p+) are limited to 3 per day. [Upgrade to Professional](/billing/plans) for unlimited high-quality downloads.
+</Note>
+
+## Supported sites
+
+SaveMate works with any website that delivers video using HLS, MP4, or WebM. This covers the vast majority of video hosting and streaming platforms on the web.
+
+<Warning>
+  SaveMate is designed for personal archiving and fair use. Always respect content creators' rights and the terms of service of the websites you visit.
+</Warning>
