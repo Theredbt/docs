@@ -5,7 +5,7 @@ description: "SaveMate works with Chrome, Edge, Brave, and more Chromium-based b
 
 ## Browser compatibility
 
-SaveMate is built for Chromium-based browsers and supports all major desktop platforms.
+SaveMate v2.0 is built on Manifest V3 and supports all major Chromium-based browsers on desktop.
 
 | Browser | Platform | Status | Notes |
 |---------|----------|--------|-------|
@@ -30,14 +30,44 @@ However, if you have a SaveMate account with cloud library enabled, you can acce
 
 ## Minimum browser versions
 
+SaveMate requires Manifest V3 support:
+
 - Chrome 88+
 - Edge 88+
 - Brave 1.20+
 
 If you're running an older browser version, update to the latest version for full compatibility.
 
+## Language support
+
+SaveMate is available in the following languages:
+
+- English
+- French (Fran&ccedil;ais)
+- Arabic (العربية)
+
+The extension automatically uses your browser's language setting.
+
+## Extension permissions
+
+SaveMate requests the following permissions during installation:
+
+| Permission | Why it's needed |
+|------------|----------------|
+| **Read and change all your data on all websites** | Required to monitor network requests for video stream detection on any site you visit |
+| **Manage your downloads** (optional) | Requested at runtime if you enable download management in settings. Provides better control over file naming and save location |
+
+<Info>
+  SaveMate uses the `declarativeNetRequest` API for downloads and `webRequest` for stream detection. All processing is local — no browsing data is sent anywhere.
+</Info>
+
 ## Why Chromium only?
 
-SaveMate uses Chromium extension APIs for stream detection, content scripts, and background processing. These APIs provide the best performance and reliability for real-time video stream detection.
+SaveMate uses Manifest V3 Chromium extension APIs including:
 
-Firefox support is in development and will use the WebExtension API when available.
+- **`webRequest`** — Real-time network monitoring for stream detection
+- **`declarativeNetRequest`** — Dynamic download rules for file saving
+- **`storage.sync`** — Settings synchronization across devices
+- **Background service worker** — Efficient background processing
+
+These APIs provide the best performance and reliability for real-time video stream detection. Firefox support using the WebExtension API is in development.

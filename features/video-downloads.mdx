@@ -31,23 +31,28 @@ Once SaveMate detects a video stream, you can download it to your device in the 
 | Full HD (1080p) | 3 per day | Unlimited |
 | QHD (1440p) | - | Unlimited |
 | 4K (2160p) | - | Unlimited |
-| 8K (4320p) | - | Unlimited |
+| 8K (7680p) | - | Unlimited |
 | 60fps content | - | Unlimited |
 
-## HLS stream downloads
+## HLS & DASH stream downloads
 
-For HLS (m3u8) streams, SaveMate handles the complexity of downloading segmented video:
+For HLS (m3u8) and DASH (mpd) streams, SaveMate handles the complexity of downloading segmented video:
 
-1. Parses the HLS manifest to identify all video segments
+1. Parses the manifest to identify all video and audio segments
 2. Downloads segments concurrently for maximum speed
 3. Combines segments into a single continuous file
 4. Optionally converts to your preferred container format
 
-HLS downloads support:
-- **Concurrent threading** — Multiple segments download in parallel
+Key capabilities:
+- **Concurrent threading** — Multiple segments download in parallel for faster completion
 - **Resume capability** — Interrupted downloads can be retried
-- **Separate audio/video** — Automatically combines separate audio and video tracks
+- **Separate audio/video** — Automatically combines separate audio and video tracks into one file
+- **Adaptive quality** — Choose from all available quality variants in the manifest
 - **Live streams** — Record ongoing live streams (Professional plan)
+
+## Progressive video downloads
+
+For direct video files (MP4, WebM, MKV, etc.), SaveMate downloads the file directly. File sizes are shown upfront when available from HTTP headers.
 
 ## Download limits
 
@@ -64,15 +69,29 @@ HLS downloads support:
   The HD download limit is tracked per device. If you're logged in, it's tied to your account to prevent quota abuse across devices.
 </Tip>
 
-## Download formats
+## Supported formats
 
-SaveMate supports downloading in multiple container formats:
+SaveMate can download video in 16+ container formats:
 
-- **MP4** — Universal compatibility, works on all devices and players
-- **MKV** — Supports multiple audio/subtitle tracks
-- **MOV** — Preferred by Apple ecosystem and video editors
-- **WebM** — Web-optimized, open format
+| Category | Formats |
+|----------|---------|
+| **Common video** | MP4, WebM, MKV, MOV |
+| **Transport stream** | TS, M2TS, MTS |
+| **Legacy** | AVI, WMV, FLV, MPG, 3GP, OGG |
+| **Audio** | MP3, AAC, M4A, FLAC, WAV |
 
 <Info>
-  Format conversion from HLS to MP4/MKV/MOV/WebM is a [Professional feature](/features/format-conversion).
+  Format conversion from HLS/DASH to MP4/MKV/MOV/WebM is a [Professional feature](/features/format-conversion).
+</Info>
+
+## Download settings
+
+Customize download behavior from the extension options page:
+
+- **Download management** — Enable browser download API integration for better control over file naming and save location
+- **Download path** — Set a custom folder prefix for downloads (e.g., `SaveMate/` to organize files)
+- **File naming** — Files are automatically named with deduplication (adding a number suffix if a file already exists)
+
+<Info>
+  The download management feature requires an optional browser permission that is requested at runtime when you enable it.
 </Info>
