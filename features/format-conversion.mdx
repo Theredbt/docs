@@ -1,0 +1,51 @@
+---
+title: "Format Conversion"
+description: "Convert HLS streams to MP4, MKV, MOV, or WebM. Extract audio to MP3 or AAC."
+---
+
+<Info>Format conversion is a **Professional** feature. [Upgrade your plan](/billing/plans) to access it.</Info>
+
+SaveMate can convert HLS/m3u8 streams into standard video container formats, and extract audio tracks into common audio formats.
+
+## Video format conversion
+
+Convert detected HLS streams to any of these formats:
+
+| Target format | Best for |
+|--------------|----------|
+| **MP4** | Universal compatibility — works on all devices, browsers, and media players |
+| **MKV** | Multiple audio tracks, subtitles, and metadata-rich video files |
+| **MOV** | Apple ecosystem, Final Cut Pro, and professional video editing |
+| **WebM** | Web embedding, open-source workflows |
+
+## Audio extraction
+
+Extract audio from video streams into standalone audio files:
+
+| Target format | Best for |
+|--------------|----------|
+| **MP3** | Universal audio compatibility, music players, podcasts |
+| **AAC** | Higher quality at lower bitrates, Apple ecosystem |
+
+## How conversion works
+
+<Steps>
+  <Step title="Detect and download">
+    SaveMate detects the HLS stream and downloads all video/audio segments.
+  </Step>
+  <Step title="Select target format">
+    Choose your desired output format from the format picker.
+  </Step>
+  <Step title="Local processing">
+    SaveMate converts the stream locally in your browser using WebAssembly-based processing. No data is uploaded to any server.
+  </Step>
+  <Step title="Save the result">
+    The converted file is saved to your downloads folder.
+  </Step>
+</Steps>
+
+## Key details
+
+- **All processing is local** — Conversion happens in your browser using efficient WebAssembly code. Your video data never leaves your device.
+- **Quality preservation** — SaveMate converts container formats without re-encoding, so there's no quality loss for compatible codec combinations.
+- **Separate audio/video** — When an HLS stream has separate audio and video tracks, SaveMate automatically muxes them into a single output file.

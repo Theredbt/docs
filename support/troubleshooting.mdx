@@ -1,0 +1,94 @@
+---
+title: "Troubleshooting"
+description: "Solutions for common issues with SaveMate."
+---
+
+## Stream not detected
+
+**The SaveMate icon doesn't light up on a page with video.**
+
+<Steps>
+  <Step title="Check the stream format">
+    SaveMate detects HLS (m3u8), MP4, and WebM streams. Some sites use proprietary DRM-protected streams that cannot be detected.
+  </Step>
+  <Step title="Refresh the page">
+    Stream detection starts when the page loads. Try refreshing the page to trigger detection again.
+  </Step>
+  <Step title="Play the video">
+    Some sites only load the video stream when you press play. Start playing the video and wait a few seconds for detection.
+  </Step>
+  <Step title="Check the extension is enabled">
+    Right-click the SaveMate icon and select **Manage extension**. Make sure the extension is toggled **On**.
+  </Step>
+</Steps>
+
+## Download fails or is incomplete
+
+**The download starts but doesn't complete, or the downloaded file is corrupted.**
+
+- **Check your internet connection** — Unstable connections can interrupt HLS segment downloads
+- **Try a different quality** — Lower quality streams have smaller segments and are more reliable on slow connections
+- **Retry the download** — SaveMate supports resuming interrupted HLS downloads
+- **Clear browser cache** — Cached manifest data can sometimes cause issues. Clear your cache and refresh the page
+- **Check disk space** — Make sure you have enough free storage for the video file
+
+## Extension not appearing in toolbar
+
+**You installed SaveMate but can't find it in your browser.**
+
+The extension may be installed but not pinned to your toolbar:
+
+1. Click the **puzzle piece icon** in the top-right of your browser toolbar
+2. Find SaveMate in the extension list
+3. Click the **pin icon** to keep it visible
+
+See the [Pin to Toolbar guide](/extension/pinning) for detailed instructions.
+
+## Cloud sync issues
+
+**Uploads to cloud storage fail or don't start.**
+
+<AccordionGroup>
+  <Accordion title="Google Drive / Dropbox">
+    - **Re-authorize**: Your OAuth token may have expired. Go to Cloud Sync settings, disconnect the provider, and reconnect
+    - **Check permissions**: Make sure you granted SaveMate the required permissions during OAuth authorization
+    - **Storage quota**: Check that your cloud storage account has enough free space
+  </Accordion>
+  <Accordion title="AWS S3 / Cloudflare R2">
+    - **Verify credentials**: Double-check your Access Key ID and Secret Access Key
+    - **Bucket permissions**: Ensure your IAM user/policy has `s3:PutObject` and `s3:CreateMultipartUpload` permissions
+    - **Region**: Confirm the correct region is configured for your S3 bucket
+  </Accordion>
+</AccordionGroup>
+
+## Account issues
+
+### Can't verify email
+
+If you didn't receive the verification email:
+
+1. Check your spam/junk folder
+2. Go to [savemate.io/email/verify](https://savemate.io/email/verify) and click **Resend verification email**
+3. If using a work email, check with your IT department about email filters
+
+### Forgot password
+
+1. Go to [savemate.io/forgot-password](https://savemate.io/forgot-password)
+2. Enter your email address
+3. Check your inbox for the reset link
+4. Click the link and set a new password
+
+### 2FA lockout
+
+If you've lost access to your authenticator app:
+
+1. Use one of your saved recovery codes to log in
+2. Once logged in, disable and re-enable 2FA with a new device
+
+If you've also lost your recovery codes, contact support for account recovery assistance.
+
+## Still need help?
+
+<Card title="Contact us" icon="envelope" href="https://savemate.io/contact" horizontal>
+  Reach out to our support team and we'll help you resolve any issues.
+</Card>
