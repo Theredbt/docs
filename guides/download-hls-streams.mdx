@@ -7,9 +7,9 @@ HLS (HTTP Live Streaming) is the most common adaptive streaming format on the we
 
 ## What is HLS?
 
-HLS streams use `.m3u8` manifest files that point to many small video segments. Instead of a single video file, the stream is broken into chunks that the browser downloads sequentially. This is what makes adaptive quality possible — the player can switch between quality levels mid-stream.
+HLS is a streaming method where video is split into many small pieces instead of delivered as a single file. This is what allows sites to offer multiple quality levels and switch between them based on your connection speed.
 
-SaveMate handles all this complexity for you. It parses the manifest, downloads all segments concurrently, and combines them into a single video file.
+SaveMate handles all this complexity for you. It downloads all the pieces at once and combines them into a single video file.
 
 ## How to download an HLS stream
 
@@ -33,7 +33,7 @@ SaveMate handles all this complexity for you. It parses the manifest, downloads 
 
 ## Converting HLS to MP4
 
-By default, HLS segments download in their native container format (usually MPEG-TS). With the Professional plan, you can convert to standard formats:
+By default, HLS streams download in their native format (.ts files). With the Professional plan, you can convert to standard formats that work on all devices:
 
 | Target | Use case |
 |--------|----------|
@@ -44,7 +44,7 @@ By default, HLS segments download in their native container format (usually MPEG
 
 Conversion happens locally in your browser — no data is uploaded to any server.
 
-<Info>Format conversion is a [Professional feature](/billing/plans). Free users download HLS streams in their native MPEG-TS format.</Info>
+<Info>Format conversion is a [Professional feature](/billing/plans). Free users download HLS streams in their native .ts format, which can be played in VLC and most modern media players.</Info>
 
 ## Live stream recording
 
@@ -59,11 +59,11 @@ SaveMate can record ongoing live HLS streams. When you detect a live stream:
 
 ## Separate audio and video tracks
 
-Many HLS streams deliver audio and video as separate tracks. SaveMate automatically detects both, downloads them in parallel, and muxes them into a single output file. No manual merging required.
+Many HLS streams deliver audio and video as separate tracks. SaveMate automatically detects both, downloads them together, and combines them into a single file. No manual merging required.
 
 ## Tips for HLS downloads
 
 - **Refresh if not detected** — Some streams load lazily. Refresh the page and play the video to trigger detection
-- **Check all quality options** — HLS manifests often include more quality levels than the player UI shows
-- **Large files** — Long HLS streams (movies, lectures) can be several GB. Make sure you have enough disk space
-- **Bandwidth estimates** — SaveMate samples stream bandwidth to estimate file sizes before download
+- **Check all quality options** — SaveMate often finds more quality levels than the video player shows
+- **Large files** — Long streams (movies, lectures) can be several GB. Make sure you have enough disk space
+- **File size previews** — SaveMate estimates the file size before you download so you know what to expect

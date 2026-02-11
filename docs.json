@@ -17,8 +17,7 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart",
-              "changelog"
+              "quickstart"
             ]
           },
           {
@@ -42,17 +41,21 @@
             ]
           },
           {
-            "group": "How-To Guides",
+            "group": "Download Guides",
             "pages": [
               "guides/download-hls-streams",
               "guides/download-from-vimeo",
               "guides/youtube-and-chrome-extensions",
-              "guides/copyright-and-fair-use",
+              "guides/tips-and-tricks"
+            ]
+          },
+          {
+            "group": "Cloud Storage Setup",
+            "pages": [
               "guides/setup-google-drive",
               "guides/setup-dropbox",
               "guides/setup-aws-s3",
-              "guides/setup-cloudflare-r2",
-              "guides/tips-and-tricks"
+              "guides/setup-cloudflare-r2"
             ]
           },
           {
@@ -76,8 +79,14 @@
             "pages": [
               "support/faq",
               "support/troubleshooting",
-              "privacy",
               "glossary"
+            ]
+          },
+          {
+            "group": "Legal",
+            "pages": [
+              "privacy",
+              "guides/copyright-and-fair-use"
             ]
           }
         ]
