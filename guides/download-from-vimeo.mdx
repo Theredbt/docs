@@ -1,0 +1,65 @@
+---
+title: "Download from Vimeo"
+description: "How to download Vimeo videos with SaveMate's enhanced detection."
+---
+
+SaveMate includes a dedicated Vimeo detector that intercepts the player config API for accurate quality information and file sizes.
+
+## How Vimeo detection works
+
+Unlike generic stream detection, SaveMate's Vimeo detector:
+
+1. **Intercepts the player config** — Captures Vimeo's internal API response to extract all available formats
+2. **Shows progressive and HLS options** — Vimeo serves both direct MP4 files and adaptive HLS streams
+3. **Displays accurate file sizes** — Progressive MP4 sizes are exact, not estimated
+4. **Detects all quality levels** — Including qualities the Vimeo player may not expose in its UI
+
+## Downloading a Vimeo video
+
+<Steps>
+  <Step title="Visit the Vimeo page">
+    Navigate to the Vimeo video page or any site that embeds a Vimeo player.
+  </Step>
+  <Step title="Play the video">
+    Press play to trigger the Vimeo player's API request. SaveMate intercepts this to extract video information.
+  </Step>
+  <Step title="Click SaveMate">
+    The extension icon lights up. Click it to see all available download options.
+  </Step>
+  <Step title="Choose your format">
+    You'll typically see two types of options:
+    - **Progressive MP4** — Direct file downloads with exact sizes. Available in multiple qualities.
+    - **HLS stream** — Adaptive streaming with all quality variants.
+
+    Progressive MP4 downloads are faster since there's no segment processing involved.
+  </Step>
+  <Step title="Download">
+    Click **Download** on your preferred option.
+  </Step>
+</Steps>
+
+## Embedded Vimeo videos
+
+SaveMate detects Vimeo videos wherever they're embedded — not just on vimeo.com. This includes:
+
+- Course platforms (Teachable, Thinkific, Kajabi)
+- Portfolio sites
+- Business websites
+- Learning management systems
+
+The Vimeo detector works the same way regardless of where the player is embedded.
+
+<Tip>If you're on a site with an embedded Vimeo player, make sure to play the video first. The detection relies on the Vimeo player API call that happens during playback initialization.</Tip>
+
+## Quality options
+
+| Quality | Progressive MP4 | HLS |
+|---------|-----------------|-----|
+| 360p | Usually available | Available |
+| 480p | Usually available | Available |
+| 720p | Usually available | Available |
+| 1080p | Depends on uploader | Available |
+| 1440p | Rare | Depends on upload |
+| 4K | Rare | Depends on upload |
+
+<Note>The available qualities depend on what the video creator uploaded. SaveMate shows everything Vimeo's API provides.</Note>

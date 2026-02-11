@@ -44,6 +44,36 @@ Extract audio from video streams into standalone audio files:
   </Step>
 </Steps>
 
+## Format comparison
+
+Use this table to choose the right format for your use case:
+
+| | MP4 | MKV | MOV | WebM |
+|---|---|---|---|---|
+| **Device compatibility** | Universal | Good (VLC, most players) | Apple ecosystem | Browsers, Linux |
+| **Multiple audio tracks** | Limited | Excellent | Good | Limited |
+| **Subtitle support** | Basic | Excellent (multiple formats) | Good | Basic (WebVTT) |
+| **File size** | Medium | Medium | Medium-Large | Smaller |
+| **Streaming friendly** | Excellent | Poor | Good | Good |
+| **Professional editing** | Good | Limited | Excellent (Final Cut) | Limited |
+| **Web embedding** | Good | Not recommended | Not recommended | Excellent |
+
+### When to use each format
+
+- **MP4** — Default choice. Works everywhere. Best for sharing, mobile playback, and general use.
+- **MKV** — Best for archiving. Supports multiple audio tracks (different languages), many subtitle formats, and rich metadata. Ideal for media servers like Plex or Jellyfin.
+- **MOV** — Choose this for editing in Final Cut Pro or if you primarily use Apple devices.
+- **WebM** — Smallest file size for web use. Choose this for embedding on websites or if you prefer open formats.
+
+### Audio format comparison
+
+| | MP3 | AAC |
+|---|---|---|
+| **Compatibility** | Universal | Very wide (all modern devices) |
+| **Quality at low bitrates** | Adequate | Better |
+| **File size** | Larger | Smaller at same quality |
+| **Best for** | Maximum compatibility | Higher quality, Apple ecosystem |
+
 ## Key details
 
 - **All processing is local** — Conversion happens in your browser using efficient WebAssembly code. Your video data never leaves your device.

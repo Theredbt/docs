@@ -87,6 +87,85 @@ If you've lost access to your authenticator app:
 
 If you've also lost your recovery codes, contact support for account recovery assistance.
 
+## Download limit reached
+
+**You see a message that you've reached your daily download limit.**
+
+Free users can download unlimited videos at 720p and below, but HD downloads (1080p and above) are limited to 3 per day.
+
+- **The limit resets at midnight** — Wait until the next day for your HD downloads to reset
+- **The limit is tracked per device** — Using a different browser or device won't reset the limit if you're logged in, as it's tied to your account
+- **Lower quality downloads are unlimited** — You can still download at 720p and below without any limit
+- **Upgrade to Professional** — [Professional plans](/billing/plans) include unlimited HD downloads with no daily cap
+
+<Tip>If you frequently need HD downloads, consider the [lifetime access](/billing/lifetime) option for a one-time payment with no recurring charges.</Tip>
+
+## Cloud upload stuck
+
+**An upload to cloud storage shows as "uploading" but doesn't progress.**
+
+<AccordionGroup>
+  <Accordion title="Check connection health">
+    Go to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and check the status indicator on your provider card:
+    - **Healthy** (green) — Connection is working. The issue may be network-related.
+    - **Broken** (yellow) — Your OAuth token expired. Click **Reconnect** to re-authorize.
+    - **Revoked** (red) — Access was removed from the provider side. Reconnect with new authorization.
+  </Accordion>
+  <Accordion title="Pause and resume">
+    For multipart uploads (AWS S3, Cloudflare R2), try pausing the upload and resuming it. This creates a fresh connection while preserving already-uploaded parts.
+  </Accordion>
+  <Accordion title="Check your cloud storage quota">
+    Make sure your cloud storage account has enough free space. Google Drive shares its 15GB quota with Gmail and Google Photos.
+  </Accordion>
+  <Accordion title="Retry failed uploads">
+    If an upload failed, you can retry it from the upload history on the Cloud Sync page. Click the retry button next to the failed upload.
+  </Accordion>
+</AccordionGroup>
+
+## Payment issues
+
+**A subscription payment failed or you can't complete checkout.**
+
+<AccordionGroup>
+  <Accordion title="Payment method declined">
+    1. Go to your [billing dashboard](https://savemate.io/billing)
+    2. Update your payment method with a valid card
+    3. Retry the payment
+
+    Common reasons for decline: insufficient funds, expired card, bank fraud protection. Contact your bank if the card should be working.
+  </Accordion>
+  <Accordion title="Invoice payment failed">
+    Failed invoices can be retried from your billing dashboard. SaveMate will also automatically retry failed payments after a short delay.
+  </Accordion>
+  <Accordion title="Subscription not activating after payment">
+    Webhook processing can occasionally take a few minutes. If your Professional features don't activate within 5 minutes of payment, try:
+    1. Refreshing the page
+    2. Logging out and back in
+    3. Contacting support if the issue persists
+  </Accordion>
+</AccordionGroup>
+
+## Extension doesn't detect videos on SPA sites
+
+**SaveMate doesn't detect videos when navigating between pages on single-page applications.**
+
+SaveMate includes an SPA observer that detects navigation changes on React, Vue, and Angular sites. If detection isn't working:
+
+1. **Play the video** — Some SPAs don't load streams until playback starts
+2. **Wait a few seconds** — SPA navigation detection has a brief delay while the new content loads
+3. **Try a full page refresh** — Press F5 or Ctrl+R to force a complete reload, which triggers fresh detection
+4. **Check blocked sites** — Make sure the domain isn't in your [blocked sites list](/extension/settings#website-controls)
+
+## Report a bug
+
+If you encounter an issue that isn't covered here, you can submit a bug report directly from the extension:
+
+1. Click the SaveMate icon in your toolbar
+2. Look for the feedback or report option in the popup footer
+3. Describe the issue and submit
+
+Our team reviews all submitted reports and will follow up if we need more information.
+
 ## Still need help?
 
 <Card title="Contact us" icon="envelope" href="https://savemate.io/contact" horizontal>

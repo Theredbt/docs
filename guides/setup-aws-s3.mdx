@@ -1,0 +1,130 @@
+---
+title: "Set Up AWS S3"
+description: "Connect AWS S3 to SaveMate for cloud storage of your downloaded videos."
+---
+
+AWS S3 uses API key authentication. You'll need to create an IAM user with the right permissions and provide your credentials to SaveMate.
+
+## Prerequisites
+
+- A SaveMate account with a [Professional plan](/billing/plans)
+- An AWS account with an S3 bucket
+- An IAM user with S3 write permissions
+
+## Step 1: Create an S3 bucket
+
+If you don't already have a bucket:
+
+1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/s3/)
+2. Click **Create bucket**
+3. Enter a bucket name (e.g., `my-savemate-videos`)
+4. Choose a region close to you for faster uploads
+5. Leave other settings as default and click **Create bucket**
+
+## Step 2: Create an IAM user
+
+SaveMate needs an IAM user with limited permissions to upload files:
+
+1. Go to the [IAM Console](https://console.aws.amazon.com/iam/)
+2. Navigate to **Users** and click **Create user**
+3. Enter a username (e.g., `savemate-uploader`)
+4. Select **Attach policies directly**
+5. Create and attach a custom policy with these permissions:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:CreateMultipartUpload",
+        "s3:UploadPart",
+        "s3:CompleteMultipartUpload",
+        "s3:AbortMultipartUpload",
+        "s3:ListMultipartUploadParts"
+      ],
+      "Resource": "arn:aws:s3:::YOUR-BUCKET-NAME/*"
+    }
+  ]
+}
+```
+
+Replace `YOUR-BUCKET-NAME` with your actual bucket name.
+
+<Warning>Only grant the minimum permissions listed above. Do not use `s3:*` or attach the `AmazonS3FullAccess` policy.</Warning>
+
+## Step 3: Generate access keys
+
+1. In the IAM Console, click on your new user
+2. Go to the **Security credentials** tab
+3. Under **Access keys**, click **Create access key**
+4. Select **Third-party service** as the use case
+5. Copy both the **Access Key ID** and **Secret Access Key**
+
+<Warning>The Secret Access Key is only shown once. Save it securely before closing the dialog.</Warning>
+
+## Step 4: Connect in SaveMate
+
+<Steps>
+  <Step title="Open Cloud Sync">
+    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in.
+  </Step>
+  <Step title="Click Connect on AWS S3">
+    Find the AWS S3 card and click **Connect**.
+  </Step>
+  <Step title="Enter your credentials">
+    Fill in the connection form:
+    - **Access Key ID** — Your IAM user's access key
+    - **Secret Access Key** — Your IAM user's secret key
+    - **Bucket name** — Your S3 bucket name
+    - **Region** — The AWS region where your bucket is located
+  </Step>
+  <Step title="Test and save">
+    SaveMate validates the credentials by attempting a test upload. If successful, the connection is saved.
+  </Step>
+</Steps>
+
+## How uploads work
+
+S3 uses **multipart upload** for files over 100MB:
+
+- Files are split into 10MB parts
+- Parts upload in parallel for maximum speed
+- Uploads can be **paused and resumed** at any time
+- Supports files up to 50TB
+- Failed parts are automatically retried
+
+For files under 100MB, SaveMate uses a direct single-request upload via presigned URLs.
+
+## Managing the connection
+
+### Update credentials
+
+If you rotate your IAM access keys:
+
+1. Generate new keys in the IAM Console
+2. Go to Cloud Sync settings in SaveMate
+3. Update the credentials on the S3 card
+
+### Disconnect
+
+Click disconnect on the S3 card to remove the connection. Your bucket and files are not affected — only the SaveMate connection is removed.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Access denied error">
+    Verify that your IAM policy includes all required actions (`PutObject`, `CreateMultipartUpload`, `UploadPart`, `CompleteMultipartUpload`, `AbortMultipartUpload`, `ListMultipartUploadParts`) and that the Resource ARN matches your bucket name.
+  </Accordion>
+  <Accordion title="Wrong region error">
+    S3 bucket names are globally unique but buckets exist in specific regions. Make sure the region in SaveMate matches where your bucket was created.
+  </Accordion>
+  <Accordion title="Upload timeout">
+    Large file uploads over slow connections can time out. Try:
+    - Using a more stable connection
+    - Pausing and resuming the upload to reset the connection
+    - Checking if your S3 bucket has any lifecycle policies that might interfere
+  </Accordion>
+</AccordionGroup>

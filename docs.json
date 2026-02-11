@@ -17,7 +17,8 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart"
+              "quickstart",
+              "changelog"
             ]
           },
           {
@@ -25,7 +26,8 @@
             "pages": [
               "extension/installation",
               "extension/pinning",
-              "extension/supported-browsers"
+              "extension/supported-browsers",
+              "extension/settings"
             ]
           },
           {
@@ -37,6 +39,20 @@
               "features/chromecast",
               "features/cloud-storage",
               "features/video-library"
+            ]
+          },
+          {
+            "group": "How-To Guides",
+            "pages": [
+              "guides/download-hls-streams",
+              "guides/download-from-vimeo",
+              "guides/youtube-and-chrome-extensions",
+              "guides/copyright-and-fair-use",
+              "guides/setup-google-drive",
+              "guides/setup-dropbox",
+              "guides/setup-aws-s3",
+              "guides/setup-cloudflare-r2",
+              "guides/tips-and-tricks"
             ]
           },
           {
@@ -59,7 +75,9 @@
             "group": "Support",
             "pages": [
               "support/faq",
-              "support/troubleshooting"
+              "support/troubleshooting",
+              "privacy",
+              "glossary"
             ]
           }
         ]

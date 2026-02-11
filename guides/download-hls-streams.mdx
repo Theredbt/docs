@@ -1,0 +1,69 @@
+---
+title: "Download HLS Streams"
+description: "How to download HLS (m3u8) video streams with SaveMate."
+---
+
+HLS (HTTP Live Streaming) is the most common adaptive streaming format on the web. SaveMate can detect, download, and convert HLS streams automatically.
+
+## What is HLS?
+
+HLS streams use `.m3u8` manifest files that point to many small video segments. Instead of a single video file, the stream is broken into chunks that the browser downloads sequentially. This is what makes adaptive quality possible — the player can switch between quality levels mid-stream.
+
+SaveMate handles all this complexity for you. It parses the manifest, downloads all segments concurrently, and combines them into a single video file.
+
+## How to download an HLS stream
+
+<Steps>
+  <Step title="Visit the page">
+    Navigate to any site that uses HLS streaming. Most video platforms, news sites, and educational platforms use HLS.
+  </Step>
+  <Step title="Play the video">
+    Some sites only load the HLS manifest when you press play. Start the video to trigger stream detection.
+  </Step>
+  <Step title="Click the SaveMate icon">
+    When the icon lights up, click it to see the detected stream with all available quality variants.
+  </Step>
+  <Step title="Select quality">
+    Choose from the available quality levels. HLS streams typically offer multiple options (360p, 480p, 720p, 1080p, etc.).
+  </Step>
+  <Step title="Download">
+    Click **Download**. SaveMate downloads all segments in parallel and combines them into a single file.
+  </Step>
+</Steps>
+
+## Converting HLS to MP4
+
+By default, HLS segments download in their native container format (usually MPEG-TS). With the Professional plan, you can convert to standard formats:
+
+| Target | Use case |
+|--------|----------|
+| **MP4** | Universal playback on any device or player |
+| **MKV** | Preserve multiple audio tracks and subtitles |
+| **MOV** | Apple ecosystem and professional editing |
+| **WebM** | Web embedding and open-source workflows |
+
+Conversion happens locally in your browser — no data is uploaded to any server.
+
+<Info>Format conversion is a [Professional feature](/billing/plans). Free users download HLS streams in their native MPEG-TS format.</Info>
+
+## Live stream recording
+
+SaveMate can record ongoing live HLS streams. When you detect a live stream:
+
+1. Click **Download** to start recording
+2. SaveMate captures segments as they become available
+3. Stop the recording when you're done
+4. The recorded segments are combined into a single file
+
+<Note>Live stream recording is available on the Professional plan. Session duration is limited by your browser tab staying open.</Note>
+
+## Separate audio and video tracks
+
+Many HLS streams deliver audio and video as separate tracks. SaveMate automatically detects both, downloads them in parallel, and muxes them into a single output file. No manual merging required.
+
+## Tips for HLS downloads
+
+- **Refresh if not detected** — Some streams load lazily. Refresh the page and play the video to trigger detection
+- **Check all quality options** — HLS manifests often include more quality levels than the player UI shows
+- **Large files** — Long HLS streams (movies, lectures) can be several GB. Make sure you have enough disk space
+- **Bandwidth estimates** — SaveMate samples stream bandwidth to estimate file sizes before download

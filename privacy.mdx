@@ -1,0 +1,107 @@
+---
+title: "Privacy & Security"
+description: "How SaveMate protects your data and privacy."
+---
+
+SaveMate is designed with privacy as a core principle. Here's exactly what the extension does and doesn't do with your data.
+
+## Local-first processing
+
+All video detection, downloading, and format conversion happens entirely in your browser. SaveMate does not upload your video data to any external server for processing.
+
+| Operation | Where it happens |
+|-----------|-----------------|
+| Stream detection | Your browser (network API monitoring) |
+| Video downloading | Your browser (direct to disk) |
+| Format conversion | Your browser (WebAssembly) |
+| Audio extraction | Your browser (WebAssembly) |
+| Cloud sync upload | Browser to your chosen provider (Google Drive, Dropbox, S3, R2) |
+
+## Data collection
+
+### What SaveMate does NOT collect
+
+- Browsing history or visited URLs
+- Video content or downloaded files
+- Personal information beyond your account details
+- Analytics or tracking data
+- Keystroke or form input data
+
+### What SaveMate stores locally
+
+The extension stores settings and detection data in your browser's local storage:
+
+- **Extension settings** — Format preferences, download path, blocked sites, minimum file size
+- **Detected streams** — Temporarily cached metadata (title, thumbnail, quality info) for the current tab. Cleared when you close the tab
+- **Saved video library** — Video metadata (title, URL, thumbnail) for your cloud library — not the video files themselves
+- **Authentication state** — Session token for logged-in users
+
+### What SaveMate sends to our servers
+
+When you have an account and are logged in:
+
+- **Authentication** — Session-based login (email, encrypted password hash)
+- **Saved video metadata** — Title, source URL, and thumbnail URL when you save a video to your library
+- **Cloud upload metadata** — File name, size, and status for cloud sync tracking
+- **Bug reports** — Only when you explicitly submit a report through the extension
+
+## Cloud storage security
+
+### OAuth providers (Google Drive, Dropbox)
+
+- SaveMate uses industry-standard OAuth 2.0 for authorization
+- Your Google/Dropbox password is never shared with SaveMate
+- You can revoke access at any time from your Google or Dropbox account settings
+- SaveMate only requests the minimum permissions needed to upload files to a dedicated folder
+- OAuth tokens are stored encrypted on SaveMate's servers and refreshed automatically
+
+### API key providers (AWS S3, Cloudflare R2)
+
+- Your access keys are transmitted over HTTPS and stored encrypted on SaveMate's servers
+- We recommend creating a dedicated IAM user with minimal write-only permissions (see the [AWS S3 setup guide](/guides/setup-aws-s3))
+- You can rotate keys at any time and update them in SaveMate
+
+## Extension permissions
+
+SaveMate requests only the permissions required for its functionality:
+
+| Permission | Why it's needed |
+|------------|----------------|
+| **Read and change data on websites** | Monitor network requests to detect video streams |
+| **Downloads** | Save downloaded files to your computer (optional, enabled in settings) |
+| **Storage** | Save extension settings and cached detection data locally |
+
+SaveMate does not request permissions for:
+- Reading your bookmarks
+- Accessing your browsing history
+- Reading or modifying cookies
+- Accessing other extensions' data
+
+## Payment security
+
+All payment processing is handled by [Stripe](https://stripe.com), a PCI DSS Level 1 certified payment processor. SaveMate never sees, stores, or processes your credit card number. Payment information is entered directly into Stripe's secure forms.
+
+## Extension verification
+
+SaveMate is published on the [Chrome Web Store](https://chromewebstore.google.com/detail/lejgkageoahacjmljeogapbkhbfldigd) and has been reviewed by Google's security team. The extension uses a strict Content Security Policy:
+
+```
+script-src 'self'; object-src 'self'
+```
+
+This prevents any external code from running within the extension.
+
+## Account deletion
+
+You can delete your SaveMate account at any time from [Account Security settings](https://savemate.io/settings/security). Account deletion:
+
+- Permanently removes all personal data from our servers
+- Removes your saved video library
+- Cancels any active subscription
+- Is irreversible
+
+<Warning>Account deletion cannot be undone. Make sure to download any data you want to keep before deleting your account.</Warning>
+
+## Contact
+
+If you have questions about SaveMate's privacy practices, contact us at [savemate.io/contact](https://savemate.io/contact).

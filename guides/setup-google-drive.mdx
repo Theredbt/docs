@@ -1,0 +1,87 @@
+---
+title: "Set Up Google Drive"
+description: "Connect Google Drive to SaveMate for automatic cloud sync."
+---
+
+Google Drive uses OAuth 2.0 authentication, so you authorize SaveMate through your Google account without sharing your password.
+
+## Prerequisites
+
+- A SaveMate account with a [Professional plan](/billing/plans)
+- A Google account with Google Drive storage available
+
+## Connect Google Drive
+
+<Steps>
+  <Step title="Open Cloud Sync">
+    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in to your SaveMate account.
+  </Step>
+  <Step title="Click Connect on Google Drive">
+    Find the Google Drive card and click **Connect**. You'll be redirected to Google's authorization page.
+  </Step>
+  <Step title="Choose your Google account">
+    Select the Google account you want to use for cloud storage. If you have multiple accounts, choose the one with enough free space.
+  </Step>
+  <Step title="Grant permissions">
+    Google will ask you to grant SaveMate permission to manage files in your Google Drive. SaveMate only accesses a dedicated folder — it cannot read or modify your other files.
+
+    Click **Allow** to proceed.
+  </Step>
+  <Step title="Connection confirmed">
+    You'll be redirected back to SaveMate. The Google Drive card will show a **Connected** status with a green indicator.
+  </Step>
+</Steps>
+
+## How uploads work
+
+Google Drive uses a **resumable upload** protocol:
+
+- Small files (under 100MB) upload in a single request
+- Larger files use resumable sessions that automatically handle network interruptions
+- If your connection drops mid-upload, it resumes from where it left off
+- Uploads are chunked in 5MB segments
+
+## Storage location
+
+SaveMate creates a dedicated folder in your Google Drive root directory. All uploaded files are organized within this folder.
+
+## Managing the connection
+
+### Check connection health
+
+Your Google Drive connection status shows on the Cloud Sync page:
+
+- **Healthy** — OAuth token is valid and uploads work normally
+- **Broken** — Token expired or was invalidated. Click **Reconnect** to re-authorize
+- **Revoked** — You revoked SaveMate's access from your Google account settings. Reconnect to restore
+
+<Tip>SaveMate proactively refreshes OAuth tokens before they expire, so you shouldn't see "Broken" status under normal conditions.</Tip>
+
+### Disconnect
+
+To disconnect Google Drive:
+
+1. Go to [savemate.io/cloud-sync](https://savemate.io/cloud-sync)
+2. Click the disconnect option on the Google Drive card
+3. The connection is removed from SaveMate
+
+To also revoke SaveMate's access from Google's side, visit [myaccount.google.com/permissions](https://myaccount.google.com/permissions) and remove SaveMate.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Upload fails with permission error">
+    Your OAuth token may have expired. Go to Cloud Sync, disconnect Google Drive, and reconnect.
+  </Accordion>
+  <Accordion title="Storage quota exceeded">
+    Check your Google Drive storage at [drive.google.com/settings](https://drive.google.com/settings). Free Google accounts include 15GB shared across Drive, Gmail, and Photos. Consider upgrading your Google storage or switching to a different provider.
+  </Accordion>
+  <Accordion title="Connection shows as broken">
+    This typically means Google invalidated your token. This can happen if:
+    - You changed your Google password
+    - You revoked third-party app access in Google settings
+    - Google detected unusual activity
+
+    Click **Reconnect** to re-authorize.
+  </Accordion>
+</AccordionGroup>

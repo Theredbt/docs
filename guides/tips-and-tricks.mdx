@@ -1,0 +1,97 @@
+---
+title: "Tips & Tricks"
+description: "Get the most out of SaveMate with these power user tips."
+---
+
+## Detection tips
+
+### Single-page applications
+
+SaveMate includes a dedicated SPA observer that detects navigation changes on single-page applications (React, Vue, Angular sites). If you navigate between pages on an SPA, SaveMate automatically re-scans for new video streams without needing a full page refresh.
+
+### Play the video first
+
+Many sites use lazy loading — the video stream isn't fetched until you actually press play. If the SaveMate icon doesn't light up immediately:
+
+1. Press play on the video
+2. Wait 2-3 seconds for the stream to load
+3. The SaveMate icon will light up once the stream is detected
+
+### Multiple videos on one page
+
+When a page has multiple videos (like a video gallery or social media feed), SaveMate detects all of them. Click the extension icon to see every detected stream, grouped for easy identification.
+
+## Download tips
+
+### Choose progressive over HLS when available
+
+Some sites serve both progressive MP4 files and HLS streams for the same video. Progressive downloads are simpler and faster since there's no segment processing. Look for the direct MP4 option when it's available at your preferred quality.
+
+### Use format conversion strategically
+
+If you're downloading for a specific device:
+- **iPhone/iPad** — MP4 or MOV
+- **Android** — MP4 or WebM
+- **PC/Mac general playback** — MP4 (universal) or MKV (for multiple audio tracks)
+- **Web embedding** — WebM for the smallest file size
+- **Professional editing** — MOV for Apple workflows, MKV for everything else
+
+### Large file downloads
+
+For very long videos (lectures, movies, live stream recordings):
+- Ensure you have enough disk space before starting
+- Use a stable internet connection — Wi-Fi is preferable over cellular
+- Keep the browser tab open during HLS/DASH downloads since segments download sequentially
+- If a download fails partway through, SaveMate supports retry for HLS streams
+
+## Cloud storage tips
+
+### Organize with folder structure
+
+When setting up cloud sync, your downloads are stored in a dedicated SaveMate folder on your cloud provider. This keeps your cloud storage organized and makes it easy to find SaveMate downloads.
+
+### Pause large uploads
+
+Multipart uploads to AWS S3 and Cloudflare R2 can be paused and resumed. This is useful when:
+- You need to switch networks (e.g., going from Wi-Fi to mobile)
+- You want to prioritize other uploads
+- Your connection becomes unstable
+
+### Monitor connection health
+
+Check your cloud connection status regularly on the [Cloud Sync page](https://savemate.io/cloud-sync). Connections show as:
+- **Healthy** — Everything is working
+- **Broken** — Authentication needs refresh (reconnect to fix)
+- **Revoked** — Access was revoked from the provider side (reconnect with new authorization)
+
+## Extension tips
+
+### Pin the extension
+
+Pin SaveMate to your toolbar so the detection indicator is always visible. Without pinning, you'll need to open the extensions menu to see the icon.
+
+### Block noisy sites
+
+Some sites trigger SaveMate on ads or small media files you don't care about. Use the [Website Controls](/extension/settings#website-controls) in settings to block specific domains from detection.
+
+### Adjust minimum file size
+
+If you're seeing too many small files in the popup (audio snippets, ad prerolls), increase the minimum file size filter in [settings](/extension/settings#minimum-file-size). Setting it to 1MB or 2MB filters out most unwanted detections.
+
+### Disable unused formats
+
+If you only care about video and not audio files, disable audio format detection (MP3, AAC, etc.) in [settings](/extension/settings#format-options). This reduces clutter when browsing music or podcast sites.
+
+## Billing tips
+
+### Try before you buy
+
+SaveMate's free plan is fully functional for standard quality downloads. Use it to evaluate whether SaveMate works for your needs before upgrading.
+
+### Consider lifetime access
+
+If you plan to use SaveMate long-term, the [lifetime access](/billing/lifetime) option is the best value. One payment, permanent access to all Professional features, including all future updates.
+
+### Upgrading from a subscription
+
+If you're on a monthly or yearly subscription and switch to lifetime access, SaveMate automatically credits the remaining value of your subscription toward the lifetime purchase price.

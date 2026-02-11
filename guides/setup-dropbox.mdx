@@ -1,0 +1,74 @@
+---
+title: "Set Up Dropbox"
+description: "Connect Dropbox to SaveMate for automatic cloud sync."
+---
+
+Dropbox uses OAuth 2.0 authentication, so you authorize SaveMate through your Dropbox account without sharing your password.
+
+## Prerequisites
+
+- A SaveMate account with a [Professional plan](/billing/plans)
+- A Dropbox account with storage available
+
+## Connect Dropbox
+
+<Steps>
+  <Step title="Open Cloud Sync">
+    Navigate to [savemate.io/cloud-sync](https://savemate.io/cloud-sync) and sign in to your SaveMate account.
+  </Step>
+  <Step title="Click Connect on Dropbox">
+    Find the Dropbox card and click **Connect**. You'll be redirected to Dropbox's authorization page.
+  </Step>
+  <Step title="Sign in to Dropbox">
+    Log in with your Dropbox credentials if prompted.
+  </Step>
+  <Step title="Grant permissions">
+    Dropbox will ask you to grant SaveMate permission to upload files. SaveMate only accesses a dedicated folder — it cannot read or modify your other files.
+
+    Click **Allow** to proceed.
+  </Step>
+  <Step title="Connection confirmed">
+    You'll be redirected back to SaveMate. The Dropbox card will show a **Connected** status.
+  </Step>
+</Steps>
+
+## How uploads work
+
+Dropbox uses a **standard upload** protocol:
+
+- Small files upload in a single API call
+- Larger files are uploaded in 8MB chunks
+- Upload progress is tracked and visible on the Cloud Sync page
+
+## Storage location
+
+SaveMate creates a dedicated folder within your Dropbox. All uploaded files are saved in this folder and sync across all your Dropbox-connected devices automatically.
+
+## Managing the connection
+
+### Check connection health
+
+- **Healthy** — OAuth token is valid
+- **Broken** — Token expired. Click **Reconnect** to re-authorize
+- **Revoked** — Access was removed from Dropbox settings. Reconnect to restore
+
+### Disconnect
+
+1. Go to [savemate.io/cloud-sync](https://savemate.io/cloud-sync)
+2. Click disconnect on the Dropbox card
+
+To also revoke from Dropbox's side, visit [dropbox.com/account/connected_apps](https://www.dropbox.com/account/connected_apps) and remove SaveMate.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Upload stuck or slow">
+    Dropbox has rate limits on API uploads. If you're uploading many files in quick succession, some may queue. Wait a few minutes and retry.
+  </Accordion>
+  <Accordion title="Storage quota exceeded">
+    Check your available space at [dropbox.com/account](https://www.dropbox.com/account). Free Dropbox accounts include 2GB. Consider upgrading or switching to a different cloud provider.
+  </Accordion>
+  <Accordion title="Connection shows as broken">
+    Re-authorize by clicking **Reconnect** on the Cloud Sync page. This typically resolves token expiry issues.
+  </Accordion>
+</AccordionGroup>

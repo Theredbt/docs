@@ -1,0 +1,140 @@
+---
+title: "Glossary"
+description: "Definitions of technical terms used in SaveMate documentation."
+---
+
+## Streaming & Video
+
+<AccordionGroup>
+  <Accordion title="HLS (HTTP Live Streaming)">
+    An adaptive streaming protocol developed by Apple. HLS breaks video into small segments listed in a `.m3u8` manifest file. The player downloads segments sequentially, and can switch between quality levels based on network conditions. HLS is the most common streaming format on the web.
+  </Accordion>
+
+  <Accordion title="DASH (Dynamic Adaptive Streaming over HTTP)">
+    An adaptive streaming protocol similar to HLS, using `.mpd` (Media Presentation Description) manifest files. DASH is an open standard used by many modern video platforms as an alternative to HLS.
+  </Accordion>
+
+  <Accordion title="m3u8">
+    The file extension for HLS manifest files. An m3u8 file is a text-based playlist that lists the URLs of video segments and their metadata. When SaveMate detects an m3u8 file, it means an HLS stream has been found.
+  </Accordion>
+
+  <Accordion title="MPD (Media Presentation Description)">
+    The XML-based manifest file format used by DASH streams. Similar to m3u8 for HLS, an MPD file describes available video qualities, segments, and audio tracks.
+  </Accordion>
+
+  <Accordion title="Adaptive bitrate streaming">
+    A technique where video is encoded at multiple quality levels. The player automatically switches between qualities based on your internet speed, ensuring smooth playback. Both HLS and DASH use adaptive bitrate streaming.
+  </Accordion>
+
+  <Accordion title="Progressive download">
+    A direct video file download (e.g., a single MP4 file) as opposed to segmented streaming. The browser downloads the file from start to finish. File size is usually known upfront from HTTP headers.
+  </Accordion>
+
+  <Accordion title="Segments">
+    Small chunks of video (typically 2-10 seconds each) that make up an HLS or DASH stream. SaveMate downloads all segments and combines them into a single continuous file.
+  </Accordion>
+
+  <Accordion title="Manifest">
+    A file that describes the structure of an adaptive stream. HLS uses m3u8 manifests, DASH uses MPD manifests. The manifest lists available qualities, segment URLs, and audio/video track information.
+  </Accordion>
+
+  <Accordion title="Muxing">
+    The process of combining separate audio and video streams into a single file. Many HLS/DASH streams deliver audio and video separately, and SaveMate automatically muxes them during download.
+  </Accordion>
+
+  <Accordion title="Container format">
+    A file format that wraps video and audio data together. Common containers include MP4, MKV, MOV, and WebM. Different containers support different codecs and features (like subtitles or multiple audio tracks).
+  </Accordion>
+
+  <Accordion title="Codec">
+    The algorithm used to encode and decode video or audio data. Common video codecs include H.264, H.265, VP9, and AV1. The codec determines quality and file size, while the container format determines the file extension.
+  </Accordion>
+
+  <Accordion title="Transcoding vs. transmuxing">
+    **Transmuxing** changes the container format without re-encoding (fast, no quality loss). **Transcoding** re-encodes the video with a different codec (slow, potential quality change). SaveMate transmuxes when possible to preserve quality.
+  </Accordion>
+</AccordionGroup>
+
+## File Formats
+
+<AccordionGroup>
+  <Accordion title="MP4 (.mp4)">
+    The most widely supported video container format. Works on virtually every device, browser, and media player. Uses H.264 or H.265 codecs. The default choice for most users.
+  </Accordion>
+
+  <Accordion title="MKV (.mkv)">
+    Matroska Video — an open container format that supports multiple audio tracks, subtitles, and rich metadata in a single file. Popular for archiving and media server use.
+  </Accordion>
+
+  <Accordion title="WebM (.webm)">
+    An open video format developed by Google, typically using VP9 or AV1 codecs. Common on web platforms and produces smaller files than MP4 at similar quality. Best for web embedding.
+  </Accordion>
+
+  <Accordion title="MOV (.mov)">
+    Apple's video container format, native to macOS and iOS. Preferred for Apple ecosystem workflows and professional video editing with Final Cut Pro.
+  </Accordion>
+
+  <Accordion title="MPEG-TS (.ts)">
+    Transport Stream — the native segment format used by HLS streams. When downloading HLS without conversion, you get a .ts file. Can be converted to MP4, MKV, or other formats.
+  </Accordion>
+</AccordionGroup>
+
+## Cloud Storage
+
+<AccordionGroup>
+  <Accordion title="OAuth 2.0">
+    An authorization protocol that lets you grant SaveMate access to your cloud storage without sharing your password. Used by Google Drive and Dropbox. You can revoke access at any time from the provider's settings.
+  </Accordion>
+
+  <Accordion title="Multipart upload">
+    A method for uploading large files by splitting them into smaller parts that upload in parallel. Used by AWS S3 and Cloudflare R2 for files over 100MB. Supports pause/resume and handles network interruptions gracefully.
+  </Accordion>
+
+  <Accordion title="Resumable upload">
+    An upload method that can automatically recover from network interruptions without restarting from scratch. Used by Google Drive. If your connection drops, the upload resumes from where it left off.
+  </Accordion>
+
+  <Accordion title="Presigned URL">
+    A temporary URL generated by the server that grants permission to upload a file directly to cloud storage. SaveMate uses presigned URLs so your browser uploads directly to the provider without routing through SaveMate's servers.
+  </Accordion>
+
+  <Accordion title="S3-compatible">
+    Services that use the same API as Amazon S3, allowing tools built for S3 to work with other providers. Cloudflare R2 is S3-compatible, meaning SaveMate uses the same upload protocol for both.
+  </Accordion>
+
+  <Accordion title="IAM (Identity and Access Management)">
+    AWS's system for managing access permissions. When connecting AWS S3, you create an IAM user with specific permissions limited to uploading files to your bucket.
+  </Accordion>
+
+  <Accordion title="Egress fees">
+    Charges for downloading data from cloud storage. AWS S3 charges egress fees, while Cloudflare R2 does not — a key cost advantage if you frequently access your uploaded files.
+  </Accordion>
+</AccordionGroup>
+
+## Extension & Browser
+
+<AccordionGroup>
+  <Accordion title="Manifest V3">
+    The latest Chrome extension platform specification. SaveMate is built on Manifest V3, which provides improved security, privacy, and performance compared to the older Manifest V2.
+  </Accordion>
+
+  <Accordion title="Service worker (background script)">
+    The part of the extension that runs in the background, monitoring network activity for video streams. It doesn't have access to page content directly but can observe network requests.
+  </Accordion>
+
+  <Accordion title="Content script">
+    A script injected into web pages to extract information like video titles and thumbnails. Content scripts have limited access and operate in an isolated environment.
+  </Accordion>
+
+  <Accordion title="SPA (Single-Page Application)">
+    A web application that loads a single HTML page and dynamically updates content without full page reloads. SaveMate includes a dedicated SPA observer that detects navigation changes on these sites to re-scan for video streams.
+  </Accordion>
+
+  <Accordion title="WebAssembly (WASM)">
+    A low-level code format that runs in the browser at near-native speed. SaveMate uses WebAssembly for format conversion, enabling fast local processing without uploading data to a server.
+  </Accordion>
+
+  <Accordion title="Content Security Policy (CSP)">
+    A security standard that restricts what code can run in a web page or extension. SaveMate's strict CSP (`script-src 'self'`) ensures only its own code executes, preventing injection attacks.
+  </Accordion>
+</AccordionGroup>
