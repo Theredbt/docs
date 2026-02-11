@@ -131,8 +131,7 @@
   },
   "contextual": {
     "options": [
-      "copy",
-      "view"
+      "copy"
     ]
   },
   "footer": {
